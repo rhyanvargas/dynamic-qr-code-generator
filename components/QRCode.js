@@ -11,7 +11,7 @@ export default function QRCodeSection() {
     const generateQR = async () => {
         try {
             // Check if inputText starts with "https://www", if not, prepend it.
-            const formattedText = inputText.startsWith('https://www') ? inputText : `https://www${inputText}`;
+            const formattedText = inputText.startsWith('https://www') ? inputText : `https://www.${inputText}`;
             const qr = await QRCode.toDataURL(formattedText);
             setQrImage(qr);
         } catch (err) {
