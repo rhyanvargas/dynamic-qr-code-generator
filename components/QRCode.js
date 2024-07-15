@@ -7,15 +7,26 @@ import QRCode from 'qrcode';
 export default function QRCodeSection() {
     const [inputText, setInputText] = useState('');
     const [qrImage, setQrImage] = useState('');
+    const errMsg = null;
 
+    function isValidHttpUrl(string) {
+      try {
+        const newUrl = new URL(string);
+        return newUrl.protocol === 'http:' || newUrl.protocol === 'https:';
+      } catch (err) {
+        return false;
+      }
+    }
+    
     const generateQR = async () => {
-        try {
-            // Check if inputText starts with "https://www", if not, prepend it.
-            const formattedText = inputText.startsWith('https://www') ? inputText : `https://www.${inputText}`;
-            const qr = await QRCode.toDataURL(formattedText);
-            setQrImage(qr);
-        } catch (err) {
-            console.error(err);
+        if(isValidHttpUrl(inputText)) {     
+            try {
+                const qr = await QRCode.toDataURL(inputText);
+                setQrImage(qr);
+            } catch (err) {
+                errMsg ="This is not a valid url. Please check the url and try again."
+                console.error(errMsg);
+            }      
         }
     };
 
@@ -28,7 +39,7 @@ export default function QRCodeSection() {
                 onChange={(e) => setInputText(e.target.value)}
             />
             <button onClick={generateQR}>Generate QR Code</button>
-            {qrImage && <img src={qrImage} alt="Generated QR Code" />}
+            {qrImage ? <img src={qrImage} alt="Generated QR Code" /> : errMsg && <p className='text-red'>{errMsg}</p>}
         </div>
     );
 }
