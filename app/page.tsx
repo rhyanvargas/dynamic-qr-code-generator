@@ -2,9 +2,9 @@ import Image from "next/image";
 import QRCode from "../components/QRCode";
 
 export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-        <QRCode />
-    </main>
-  );
+	return (
+		<main className="flex flex-col justify-center items-center min-h-screen">
+			<QRCode />
+		</main>
+	);
 }
