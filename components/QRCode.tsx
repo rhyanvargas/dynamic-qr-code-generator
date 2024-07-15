@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import QRCode from "qrcode";
+import Image from "next/image";
 
 export default function QRCodeSection() {
 	const [inputText, setInputText] = useState<string>("");
@@ -40,7 +41,7 @@ export default function QRCodeSection() {
 
 	return (
 		<section className="flex flex-col gap-y-4 w-full text-center max-w-sm">
-			<h1 className="text-3xl font-extrabold mb-4">Rhy's QR Code Gen</h1>
+			<h1 className="text-3xl font-extrabold mb-4">Rhy&apos;s QR Code Gen</h1>
 			<p className="text-gray-500 mb-6">
 				Enter a URL to generate a QR code. The QR code will be displayed below.
 			</p>
@@ -69,7 +70,15 @@ export default function QRCodeSection() {
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					<img src={qrImage} alt="QR Code" className="cursor-pointer w-full" />
+					<Image
+						src={qrImage}
+						alt="QR Code"
+						width={300}
+						height={300}
+						layout="responsive"
+						objectFit="contain"
+						className="cursor-pointer"
+					/>
 				</a>
 			) : (
 				errMsg && <p className="text-red-600">{errMsg}</p>
