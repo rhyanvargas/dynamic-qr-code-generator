@@ -1,5 +1,7 @@
 # Dynamic QR Code Generator
 
+### DEMO: https://dynamic-qr-code-generator-lac.vercel.app/
+
 This project is a web application built with React (potentially using Next.js or Create React App) that allows users to generate QR codes dynamically from URLs. It provides a simple interface where users can enter a URL, and upon submission, a QR code is generated and displayed on the screen. This tool is useful for quickly creating QR codes for websites, online resources, or any valid URL.
 
 ## Features
