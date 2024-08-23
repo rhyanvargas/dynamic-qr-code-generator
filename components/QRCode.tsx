@@ -32,7 +32,7 @@ export default function QRCodeSection() {
 			}
 		} else {
 			setQrImage("");
-			setErrMsg("This is not a valid URL. Please check the URL and try again.");
+			setErrMsg("This is not a valid URL. Did you add 'https://' to start of the URL? If not, please add and try again.");
 		}
 	};
 
